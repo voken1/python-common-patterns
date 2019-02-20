@@ -3,8 +3,9 @@
 
 import re
 
-PATTERN_ASN = 'ASN?([0-9]+)'
-PATTERN_SSR_URL = 'ssr?://[A-Za-z0-9\-_]+'
+PATTERN_ASN = r'ASN?([0-9]+)'
+PATTERN_SSR_URL = r'ssr?://[A-Za-z0-9\-_]+'
+PATTERN_WEB_URL = r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 
 
 def is_ip_address(ip: str):
@@ -92,3 +93,15 @@ def findall_ssr_urls(string: str):
     """
     pattern = re.compile(PATTERN_SSR_URL)
     return pattern.findall(string)
+
+
+def findall_web_urls(string: str):
+    """
+    Returns http/https URL(s)
+
+    :param str string: Text
+    :return: list
+    """
+    pattern = re.compile(PATTERN_WEB_URL)
+    return pattern.findall(string)
+
