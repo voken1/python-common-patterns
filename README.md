@@ -15,6 +15,6 @@ $ pip3 install common-patterns
 ## Usage
 
 ``` python
-import common-patterns
+import common_patterns
 ```
 
